@@ -13,7 +13,7 @@ async function getConnection(dbName = null) {
 
   if (connections.has(key)) {
     const existing = connections.get(key);
-    if (existing.readyState === 1) return existing; // connected
+    if (existing.readyState === 1) return existing; 
     try {
       await existing.asPromise();
       return existing;

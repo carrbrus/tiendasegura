@@ -38,7 +38,6 @@ router.get(`/database/${db}/collections/products/count`, async (req, res) => {
       collection: 'products',
       totalDocuments: count
     });
-    // not closing the connection because we reuse singleton connections
   }
   catch (error) {
     res.status(500).json({

@@ -16,7 +16,10 @@ app.use(express.urlencoded({ extended: true }));
 
 // Rutas
 const databaseRoutes = require('./routes/database');
+const productRoutes = require('./routes/products');
 app.use('/api/', databaseRoutes);
+app.use('/api/products', productRoutes);
+
 
 
 // Ruta de prueba
