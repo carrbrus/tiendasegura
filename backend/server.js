@@ -18,7 +18,9 @@ app.use(express.urlencoded({ extended: true }));
 const databaseRoutes = require('./routes/database');
 const productRoutes = require('./routes/products');
 const shoppingCartRoutes = require('./routes/shoppingCart');
+const listRoutes = require('./routes/list');
 
+app.use('/api/lists', listRoutes); 
 app.use('/api/shopping-carts', shoppingCartRoutes);
 app.use('/api/', databaseRoutes);
 app.use('/api/products', productRoutes);
