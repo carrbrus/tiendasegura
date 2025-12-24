@@ -4,7 +4,7 @@ const controller = require('../controllers/productController');
 
 
 // Public: list & get
-router.get('/:id', controller.getProduct);
 router.get('/', controller.getListProducts);
+router.post('/create', controller.createProduct);
 
 module.exports = router;
