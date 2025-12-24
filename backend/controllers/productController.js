@@ -1,5 +1,6 @@
 const Product = require('../models/product');
 const Catalog = require('../models/catalog');
+const List = require('../models/list');
 async function createProduct(req, res, next) {
   try {
     const payload = req.body;
@@ -43,10 +44,24 @@ async function addToCatalog(req, res, next) {
   }
 }
 
+async function addToList(req, res, next) {
+  try {
+    const { listId, productId } = req.params;
+    const list = await List.findById(listId);
+    if (!list) return res.status(404).json({ error: 'listlog not found' });
+    list.products.push(productId);
+    await list.save();
+    res.json(list);
+  }
+  catch (err) {
+    next(err);
+  }
+}
 
 module.exports = {
   createProduct,
   getProduct,
   getListProducts,
   addToCatalog,
+  addToList,
 };
